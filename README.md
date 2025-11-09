@@ -152,7 +152,8 @@ START → research → index → draft → END
 ## 📦 Prereqs
 
 - Docker + Docker Compose  
-- Groq API key  
+- GROQ_API_KEY: Create a free account at https://console.groq.com, go to API Keys, and generate a key (starts with gsk_).
+- TAVILY_API_KEY: Sign up at https://app.tavily.com, open API Keys, and create your search API key (starts with tvly_).
 
 ---
 
