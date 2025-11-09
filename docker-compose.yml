@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: rag-backend
+    env_file: .env
+    environment:
+      CHROMA_DIR: /data/chroma
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      TAVILY_API_KEY: ${TAVILY_API_KEY}
+      MODEL_NAME: ${MODEL_NAME}
+      EMBED_MODEL: ${EMBED_MODEL}
+    volumes:
+      - ./data:/data
+    ports:
+      - "8000:8000"
+    networks: [ ragnet ]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  ui:
+    build: ./ui
+    container_name: rag-ui
+    environment:
+      BACKEND_HOST: backend
+      BACKEND_PORT: 8000
+    depends_on:
+      - backend
+    ports:
+      - "8501:8501"
+    networks: [ ragnet ]
+
+networks:
+  ragnet:
+    driver: bridge

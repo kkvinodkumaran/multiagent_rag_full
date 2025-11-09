@@ -1,0 +1,29 @@
+[project]
+name = "multiagent-rag-groq"
+version = "0.1.0"
+description = "Multi-Agent RAG system powered by Groq + LangGraph"
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "groq==0.9.0",
+    "langchain==0.2.14",
+    "langchain-community==0.2.12",
+    "langchain-text-splitters==0.2.2",
+    "langgraph==0.2.17",
+    "chromadb==0.4.24",
+    "langchain-chroma==0.1.4",
+    "pydantic==2.7.4",
+    # ✅ Web search tool
+    "duckduckgo-search==6.2.3",
+    "fastapi",
+    "uvicorn",
+    "streamlit",
+    "python-dotenv",
+    "sentence-transformers>=5.1.2",
+    "langchain-huggingface>=0.0.3",
+    "tavily-python>=0.7.12",
+]
+
+
+[tool.uv]
+python-preference = "managed"
